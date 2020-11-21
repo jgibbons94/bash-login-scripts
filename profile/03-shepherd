@@ -1,0 +1,6 @@
+#if [ "$(users | xargs -n1 | grep $USER| wc -l)" == "1" ]
+if test `ps -ux | grep -v grep | grep shepherd | wc -l` == 0
+then
+        echo "starting shepherd" >> ~/.shepherdlog.log
+	shepherd & disown
+fi

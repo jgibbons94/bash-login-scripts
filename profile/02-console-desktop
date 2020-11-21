@@ -1,0 +1,24 @@
+if test -v XAUTHORITY
+then
+	for x in $(list-profiles | xargs -n1 | grep ^desktop)
+	do
+		load-profile $x
+	done
+	export BROWSER=chromium
+	export FONTCONFIG_FILE=$HOME/.fonts.conf
+	export EDITOR=gvim
+
+#anki & disown
+else
+	for x in $(list-profiles | xargs -n1 | grep ^console)
+	do
+		load-profile $x
+	done
+	export BROWSER=w3m
+	export PS1='\n\d \@\n\j jobs\n\u@\H on \l at \w \$ '
+	setleds -caps +num -scroll
+	{ sleep 1; echo setup complete; echo " Welcome master Jesse. I trust you are doing well?"; }| espeak  & disown
+	export EDITOR=vim
+fi
+
+

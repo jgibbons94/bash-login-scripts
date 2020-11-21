@@ -1,0 +1,9 @@
+if [ "$(users | xargs -n1 | grep $USER | wc -l)" == "1" ] && { ps -u | grep -v grep | grep -q bin/shepherd; }
+then
+	echo "stopping shepherd" >> ~/.shepherdlog.log
+	herd stop root
+else
+        echo "Not stopping shepherd" >> ~/.shepherdlog.log
+echo "done"
+sleep 1
+fi
