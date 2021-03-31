@@ -17,6 +17,13 @@ function load-profile()
 	then
 	      	GUIX_PROFILE=$HOME/.other-guix-profiles/$1
 		source $GUIX_PROFILE/etc/profile
+                if test -d "$GUIX_PROFILE/etc/profile.d"
+                then
+                  for script in `find "$GUIX_PROFILE/etc/profile.d" -type f`
+                  do
+                    source $script
+                  done
+                fi
 	      	export XDG_DATA_DIRS=${GUIX_PROFILE}/share${XDG_DATA_DIRS:+:}$XDG_DATA_DIRS
 	      	export MANPATH=${GUIX_PROFILE}/share/man${MANPATH:+:}$MANPATH
 	      	export INFOPATH=${GUIX_PROFILE}/share/info${INFOPATH:+:}$INFOPATH
