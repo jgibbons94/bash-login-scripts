@@ -108,6 +108,12 @@ function cleanup()
 	done
 	guix gc --free-space=250G
 }
+function log-time()
+{
+    date  "+in=%s=%Y/%m/%d %H:%M:%S.%N" >> ~/Documents/senior-project/.time-log
+    time guix environment;
+    date "+out=%s=%Y/%m/%d %H:%M:%S.%N" >> ~/Documents/senior-project/.time-log
+}
 
 #export GUIX_PACKAGE_PATH=$HOME/Documents/programming/guix_development/packages
 
