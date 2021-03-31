@@ -115,6 +115,20 @@ function log-time()
     date "+out=%s=%Y/%m/%d %H:%M:%S.%N" >> ~/Documents/senior-project/.time-log
 }
 
+function make-manifest()
+{
+  profile=$1
+  echo ";$profile"
+  echo '(specifications->manifest'
+  echo '(map symbol->string'
+  echo "'("
+  for package in `list-packages $profile`
+  do
+    echo $package
+  done
+  echo ')))'
+}
+
 #export GUIX_PACKAGE_PATH=$HOME/Documents/programming/guix_development/packages
 
 alias build='guix build'
