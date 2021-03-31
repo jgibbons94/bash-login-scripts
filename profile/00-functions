@@ -24,6 +24,14 @@ function load-profile()
                     source $script
                   done
                 fi
+                if test -d "$GUIX_PROFILE/etc/bash_completion.d"
+                then
+                  for script in `find "$GUIX_PROFILE/etc/bash_completion.d" -type f`
+                  do
+                    echo $script
+                    source $script
+                  done
+                fi
 	      	export XDG_DATA_DIRS=${GUIX_PROFILE}/share${XDG_DATA_DIRS:+:}$XDG_DATA_DIRS
 	      	export MANPATH=${GUIX_PROFILE}/share/man${MANPATH:+:}$MANPATH
 	      	export INFOPATH=${GUIX_PROFILE}/share/info${INFOPATH:+:}$INFOPATH
