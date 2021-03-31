@@ -6,7 +6,7 @@ then
 	done
 	export BROWSER=chromium
 	export FONTCONFIG_FILE=$HOME/.fonts.conf
-	export EDITOR=gvim
+	export EDITOR=vim
 
 #anki & disown
 else
