@@ -133,5 +133,5 @@ function make-manifest()
 
 alias build='guix build'
 
-export -f profile-location profile-exists load-profile list-profiles list-packages install-to remove-from upgrade-all can-upgrade quick-upgrade cleanup
+export -f profile-location profile-exists load-profile list-profiles list-packages install-to remove-from upgrade-all can-upgrade quick-upgrade cleanup log-time make-manifest
 
